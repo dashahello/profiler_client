@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles.js';
 import { createProfile, updateProfile } from '../../actions/profilesActions.js';
 
-//@TODO fix: No duplicate props allowed  react/jsx-no-duplicate-props
-
 export default function Form({ currentId, setCurrentId }) {
   const classes = useStyles();
   const dispatch = useDispatch();
