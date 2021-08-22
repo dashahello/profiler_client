@@ -1,4 +1,4 @@
 import { combineReducers } from 'redux';
-import profiles from './profiles.js';
+import profiles from './reducers.js';
 
 export default combineReducers({ profiles });

@@ -1,54 +1,47 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Button,
-  Typography,
-  Avatar
-} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-// import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
+import { Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles.js';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { getProfileById } from '../../api/index.js';
+import { getProfiles } from '../../actions/profilesActions.js';
 
-export default function Profile() {
-  const classes = useStyles();
+export default function SingleProfile() {
+  //const classes = useStyles();
 
   const dispatch = useDispatch();
 
-  const _id = 'asd';
+  const { _id } = useParams();
 
   useEffect(() => {
-    dispatch(getProfileById('asd'));
+    dispatch(getProfiles());
   }, [_id, dispatch]);
 
-  const profile = useSelector((state) => state.profile);
-
-  return (
-    <Card>
-      <CardContent className={classes.card}>
-        <div style={{ display: 'flex' }}>
-          <Avatar>{profile.name[0]}</Avatar>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}
-          >
-            <Typography style={{ marginLeft: 4 }}>
-              {profile.surname} {profile.name}
-            </Typography>
-          </div>
+  const profile = useSelector((state) =>
+    state.profiles.filter((x) => x._id === _id)
+  )[0];
+  //@TODO styling for single component
+  return !profile ? null : (
+    <Paper>
+      <div style={{ display: 'flex' }}>
+        <img
+          style={{ width: 50, height: 50 }}
+          src={`${process.env.REACT_APP_SERVER_URL}/${profile.photo}`}
+          alt=""
+        />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+          }}
+        >
+          <Typography style={{ marginLeft: 4 }}>
+            {profile.name} {profile.surname}
+          </Typography>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+      <Typography style={{ color: 'red' }}>{profile.email}</Typography>
+    </Paper>
   );
 }
 

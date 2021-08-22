@@ -14,9 +14,8 @@ export default makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
-  fileInput: {
-    width: '96%',
-    margin: '10px 0'
+  buttonUpload: {
+    marginBottom: 10
   },
   buttonSubmit: {
     marginBottom: 10

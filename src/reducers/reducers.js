@@ -7,7 +7,7 @@ import {
 } from '../constants/actionTypes.js';
 
 // profiles is a state
-const profiless = (profiles = [], action) => {
+const profiles = (profiles = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
       return action.payload;
@@ -31,4 +31,4 @@ const profiless = (profiles = [], action) => {
   }
 };
 
-export default profiless;
+export default profiles;

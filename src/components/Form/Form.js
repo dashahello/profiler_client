@@ -2,7 +2,9 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from './styles.js';
-import { createProfile, updateProfile } from '../../actions/profiles.js';
+import { createProfile, updateProfile } from '../../actions/profilesActions.js';
+
+//@TODO fix: No duplicate props allowed  react/jsx-no-duplicate-props
 
 export default function Form({ currentId, setCurrentId }) {
   const classes = useStyles();
@@ -27,18 +29,6 @@ export default function Form({ currentId, setCurrentId }) {
     }
   }, [profile]);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (currentId) {
-      dispatch(updateProfile(currentId, profileData));
-    } else {
-      dispatch(createProfile(profileData));
-    }
-
-    clear();
-  }
-
   function clear() {
     setCurrentId(null);
     setProfileData({
@@ -47,6 +37,27 @@ export default function Form({ currentId, setCurrentId }) {
       email: '',
       photo: ''
     });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append('name', profileData.name);
+    formData.append('surname', profileData.surname);
+    formData.append('email', profileData.email);
+
+    if (currentId) {
+      if (profileData.photo instanceof File) {
+        formData.append('photo', profileData.photo);
+      }
+      dispatch(updateProfile(currentId, formData));
+    } else {
+      formData.append('photo', profileData.photo);
+      dispatch(createProfile(formData));
+    }
+
+    clear();
   }
 
   return (
@@ -94,10 +105,40 @@ export default function Form({ currentId, setCurrentId }) {
           }
         />
 
-        <div className={classes.fileInput}>File Base was here</div>
+        <input
+          accept="image/*"
+          id="contained-button-file"
+          type="file"
+          style={{ display: 'none' }}
+          accept=".webp,.jpg,.jpeg,.png"
+          onChange={(evt) => {
+            console.log(evt.target.files);
+
+            setProfileData({ ...profileData, photo: evt.target.files[0] });
+          }}
+        />
+        <label htmlFor="contained-button-file">
+          <Button
+            className={classes.buttonUpload}
+            variant="contained"
+            component="span"
+          >
+            Upload
+          </Button>
+        </label>
+
+        {profileData.photo ? (
+          <Typography style={{ right: '0' }}>File selected</Typography>
+        ) : null}
 
         <Button
           className={classes.buttonSubmit}
+          disabled={
+            !profileData.name ||
+            !profileData.surname ||
+            !profileData.email ||
+            !profileData.photo
+          }
           variant="contained"
           color="primary"
           size="large"
@@ -120,5 +161,3 @@ export default function Form({ currentId, setCurrentId }) {
     </Paper>
   );
 }
-
-//

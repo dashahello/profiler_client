@@ -7,9 +7,6 @@ import {
 } from '../constants/actionTypes';
 import * as api from '../api';
 
-//Action Creators
-// async (dispatch) is coming from redux thunk
-
 export const getProfiles = () => async (dispatch) => {
   try {
     const { data } = await api.getProfiles();
@@ -36,7 +33,7 @@ export const createProfile = (profile) => async (dispatch) => {
 
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
-    console.log('zzzzzz', error);
+    console.log(error);
   }
 };
 
