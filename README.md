@@ -2,8 +2,8 @@
 
 ## Description
 
-profiler_client provides a user interface for profiler_server
-`https://github.com/dashahello/profiler_server.git`
+profiler_client provides a user interface for
+[profiler_server](https://github.com/dashahello/profiler_server.git)
 
 ## Usage
 
@@ -14,4 +14,5 @@ profiler_client provides a user interface for profiler_server
 
 - REACT_APP_SERVER_URL
 
-5. Run `npm start`
+6. Go to [profiler_server](https://github.com/dashahello/profiler_server.git) and follow the instructions
+7. Run `npm start`
