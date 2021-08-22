@@ -5,6 +5,8 @@
 profiler_client provides a user interface for
 [profiler_server](https://github.com/dashahello/profiler_server.git)
 
+![demo screenshot](https://raw.githubusercontent.com/dashahello/profiler_client/main/doc/demo.jpg 'Demo Screenshot')
+
 ## Usage
 
 1. Clone repository `git clone https://github.com/dashahello/profiler_client.git`
