@@ -104,11 +104,10 @@ export default function Form({ currentId, setCurrentId }) {
         />
 
         <input
-          accept="image/*"
           id="contained-button-file"
           type="file"
           style={{ display: 'none' }}
-          accept=".webp,.jpg,.jpeg,.png"
+          accept="image/webp, image/jpg, image/jpeg, image/png"
           onChange={(evt) => {
             console.log(evt.target.files);
 

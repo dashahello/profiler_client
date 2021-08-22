@@ -1,13 +1,10 @@
 import { Typography, Paper } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import useStyles from './styles.js';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getProfiles } from '../../actions/profilesActions.js';
 
 export default function SingleProfile() {
-  //const classes = useStyles();
-
   const dispatch = useDispatch();
 
   const { _id } = useParams();
@@ -34,7 +31,7 @@ export default function SingleProfile() {
             justifyContent: 'center'
           }}
         >
-          <Typography style={{ marginLeft: 4 }}>
+          <Typography style={{ marginLeft: 8 }}>
             {profile.name} {profile.surname}
           </Typography>
         </div>
