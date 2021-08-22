@@ -8,7 +8,7 @@ profiler_client provides a user interface for profiler_server
 ## Usage
 
 1. Clone repository `git clone https://github.com/dashahello/profiler_client.git`
-2. Go to cloned directory in terminal `cd profiler_lient`
+2. Go to cloned directory in terminal `cd profiler_client`
 3. Install the app with `npm install`
 4. Create `.env` file in the app directory with following variable:
 

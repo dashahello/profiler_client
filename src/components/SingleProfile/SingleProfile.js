@@ -19,7 +19,6 @@ export default function SingleProfile() {
   const profile = useSelector((state) =>
     state.profiles.filter((x) => x._id === _id)
   )[0];
-  //@TODO styling for single component
   return !profile ? null : (
     <Paper>
       <div style={{ display: 'flex' }}>
@@ -40,73 +39,8 @@ export default function SingleProfile() {
           </Typography>
         </div>
       </div>
-      <Typography style={{ color: 'red' }}>{profile.email}</Typography>
+
+      <Typography style={{ color: 'blue' }}>{profile.email}</Typography>
     </Paper>
   );
 }
-
-// return (
-//   <Card className={classes.card}>
-//     {/* <CardMedia
-//       className={classes.media}
-//       src={fakeImgUrl}
-//       //image={profile.selectedFile}
-//       title={profile.name}
-//     /> */}
-
-//     <div className={classes.overlay}>
-//       <Typography variant="h6">{profile.surname}</Typography>
-//       {/* <Typography variant="body2">
-//         {moment(profile.createdAt).fromNow()}
-//       </Typography> */}
-//     </div>
-
-//     <div className={classes.overlay2}>
-//       <Button
-//         style={{ color: 'white' }}
-//         size="small"
-//         onClick={() => {
-//           setCurrentId(profile._id);
-//         }}
-//       >
-//         <MoreHorizIcon fontSize="medium" />
-//       </Button>
-//     </div>
-//     {/*
-//     <div className={classes.details}>
-//       <Typography variant="body2" color="textSecondary">
-//         {profile.tags.map((tag) => `#${tag} `)}
-//       </Typography>
-//     </div> */}
-
-//     <Typography className={classes.title} variant="h5" gutterBottom>
-//       {profile.name}
-//     </Typography>
-
-//     <CardContent>
-//       <Typography variant="body2" color="textSecondary" component="p">
-//         {profile.email}
-//       </Typography>
-//     </CardContent>
-
-//     <CardActions className={classes.cardActions}>
-//       {/* <Button
-//         size="small"
-//         color="primary"
-//         onClick={() => dispatch(likePost(profile._id))}
-//       >
-//         <ThumbUpAltIcon fontSize="small" />
-//         &nbsp; Like &nbsp;
-//         {profile.likeCount}
-//       </Button> */}
-//       <Button
-//         size="small"
-//         color="primary"
-//         onClick={() => dispatch(deleteProfile(profile._id))}
-//       >
-//         <DeleteIcon fontSize="small" />
-//         Delete
-//       </Button>
-//     </CardActions>
-//   </Card>
-// );
